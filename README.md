@@ -122,6 +122,16 @@ the constructor in the class above (the parent), in our case the ```Food``` clas
 can only call ```this()``` OR ```super()``` NOT both. You can however call a ```this()``` and
 in a different constructor call ```super```.
 
+### Pros and Cons of OOP
+
+|    pros    |    Cons    |
+|------------|------------|
+|    Better Organization for methods and variables    |   Not great for small programs     |
+|    Effective programming design for APIs            |     Steeper learning curve    |
+|    Allows for quicker reuse of existing code        |      Troubleshooting can be more difficult   |
+|    polymorphism allows for more customization of functionality | Polymorphism introduces runtime overhead|
+|    Reduces cost of code maintenance | OOPs tend to be larger than procedural programs |
+
 ## UML
 
 -: private
@@ -136,7 +146,9 @@ in a different constructor call ```super```.
 -->: From class to interface (dashed line)
 
 Example:
-(this example will not render unless using enhaced markdown viewer in VS code)
+
+This example will not render unless using enhaced markdown viewer in VS code. Use [this link](http://magjac.com/graphviz-visual-editor/) to view the graph in browser using the DOT language viewer. Just copy and past the below code into the left side of the screen.
+
 
 ```dot
 digraph G {
