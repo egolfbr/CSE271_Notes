@@ -136,6 +136,7 @@ in a different constructor call ```super```.
 -->: From class to interface (dashed line)
 
 Example:
+(this example will not render unless using enhaced markdown viewer in VS code)
 
 ```dot
 digraph G {
