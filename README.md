@@ -1,5 +1,8 @@
 # CSE 271 Notes
 
+## Citation
+Notes written by Brian Egolf and Adapted from Dr. Rao's (Miami University CSE Department) CSE 271 Slides. 
+
 ## Table of Contents 
 
 **[Java Classes](#Java-Classes)**<br>
