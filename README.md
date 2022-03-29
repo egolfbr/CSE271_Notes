@@ -1,7 +1,7 @@
 # CSE 271 Notes
 
 ## Citation
-Notes written by Brian Egolf and adapted from Dr. Rao's (Miami University CSE Department) CSE 271 Slides. 
+Notes written by Brian Egolf and adapted from Dr. Rao's (Miami University CSE Department) CSE 271 Slides. All code examples taken from slides.
 
 ## Table of Contents 
 
@@ -11,7 +11,7 @@ Notes written by Brian Egolf and adapted from Dr. Rao's (Miami University CSE De
 **[Abstract Classes](#Abstract-Classes-and-Methods)**<br>
 **[Interfaces](#interfaces)**<br>
 **[Unit Testing and Debugging](#Unit-Testing)**<br>
-
+**[Recursion](#Recursion)**<br>
 ## Java Classes  
 
 4 pillars of object-oriented programming:
@@ -361,3 +361,106 @@ public void methodToTest(){
 - Select ```Coverage as``` option once you right click on the class agian.
 - Select the ```JUnit Test``` option.
 - View Report.
+
+
+## Recursion 
+
+The main idea behind recursion is to use answers from previous solution to find solution of current question. Recursion is perfect for problems that contain identical sub-probelms. A recursive method calls itself! The method usually calls itself with different parameters. There are two types: self-recursion and mutual recursion. 
+
+Self recursion:
+```java
+public static int recur(int a) {
+    recur(a-1)
+}
+```
+
+Mutual Recursion:
+```java
+
+public static int a(int j){
+    b(j-1)
+}
+public static int b(int i){
+    a(i-1)
+}
+```
+
+A recurisve method needs to have two parts: the base part and the recursive part. The base part consists of ```if``` statements that will excute and stop the method from calling itself. This is important since if there is no base case part, the method could be in an infinite loop. The recursive part is self explainitory and this is the part that calls itself over and over until the base case is executed.
+
+Example of recursive method:
+```java
+staticvoidwriteVertical(intn) {
+    if(n < 10) {
+    // 1 digit number!
+    System.out.println(n);
+    } else{
+    writeVertical(n / 10);
+    System.out.println(n % 10);
+    }
+}
+```
+
+Another example:
+```java
+static int power(int x, int n) {
+    if (n > 0) {
+        // working your way down to a base case via the n variable
+        return (power(x,n-1) * x)
+    } else {
+        return 1
+    }
+}
+```
+
+Comparison to iterative approach:
+
+Iterative example:
+```java
+static String reverse(String str) {
+    String rev = "";
+    for(inti = str.length() - 1; i >= 0; i--) {
+        rev = rev + str.charAt(i);
+    }
+    return rev;
+}
+```
+
+Recursive example:
+
+```java
+static String reverse(String str) {
+    if(str.length() == 1) {
+    return str;
+    }
+    return reverse(str.substring(1)) + str.charAt(0);
+}
+```
+
+Other probelms that recurision is great for is searching. Binary search is typically a recursive method. 
+## Sorting and Complexity
+
+Recursion can also be used to sort data. Organizing data in a specific order. Examples of orders are increasing, decreasing, alphabetical, or chronological. 
+For native data types, to compare two data instances you can use comparision methods or symbols (<, >,=). For objects you will need to use a ```compareTo``` method. ```CompareTo``` must be implemented to be symmetric and transitive.
+
+Sorting Algorithms: 
+- Seletion Sort 
+- Quick sort
+- Merge sort
+- Insertion Sort
+
+Selection Sort Steps: 
+- Start with index i and scan the rest of the list, array and find the smallest value. 
+- Swap value at index i with smallest value
+- continue until array is sorted (swapped index i with itself)
+
+Quick Sort Steps: 
+- Pick random point called pivot point. (This splits array into two unequal and unsorted smaller sub-list's)
+- Put pivot point in its correct spot in sorted array. (All numbers left are lower and all numbers right are larger)
+- call recursively until sub list has 1 element.
+
+Merge Sort Steps: 
+- if list has 1 element, do nothing.
+- split array into two sub-lists
+- call Merge sort on each sub-list
+- merge two arrays while preserving order
+
