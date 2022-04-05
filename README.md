@@ -594,3 +594,40 @@ Java has some algorithms already implemented, ready to be used.
 
 For arrays of primitive types in Arrays's class you need an implementation for each different type. For collections in Collections class, it must implement the ```collection``` interface. Sorting is done using an iterative version of merge sort for collections, and quickSort is used for array's class but instead it uses the dual pivot method.
 
+Example:
+
+```java
+
+public static boolean isSame(int[] list1, ArrayList<Integer> list2) {
+    if(list1.length != list2.size()) {
+    return false; // Different number of elements.
+    }
+    Arrays.sort(list1);
+    Collections.sort(list2);
+    for(inti = 0; (i < list1.length); i++) {
+        if(list1[i] != list2.get(i)) {
+        return false; // At least 1 difference. Not same.
+        }
+    }
+    return true; // Yes! The sorted arrays are the same!
+}
+
+//Returns true if the "key" is found in both sorted lists
+boolean inBoth(int[] list1,ArrayList<Integer> list2, int key) {
+    int idx1 = Arrays.binarySearch(list1, key);
+    int idx2 = Collections.binarySearch(list2, key);
+    return (idx1 >= 0) && (idx2 >= 0);
+}
+```
+
+Lambda Example: 
+
+This allows the user to change the way the sorting is done. (Ascending vs Descending order). The user can also use more complex sorting orders.
+
+```java
+static void resort(ArrayList<Integer> list) {
+// Change sorting order using custom comparator
+// implemented using lambda syntax
+Collections.sort(list, (x, y) -> y.compareTo(x));
+}
+```
