@@ -12,6 +12,7 @@ Notes written by Brian Egolf and adapted from Dr. Rao's (Miami University CSE De
 **[Interfaces](#interfaces)**<br>
 **[Unit Testing and Debugging](#Unit-Testing)**<br>
 **[Recursion](#Recursion)**<br>
+**[Sorting and Complexity](#Sorting-and-Complexity)**<br>
 ## Java Classes  
 
 4 pillars of object-oriented programming:
@@ -453,10 +454,81 @@ Selection Sort Steps:
 - Swap value at index i with smallest value
 - continue until array is sorted (swapped index i with itself)
 
+```java
+static <X extends Comparable<X> > 
+void swap(X a[], int idx1, int idx2) {
+    X temp  = a[idx1];
+    a[idx1] = a[idx2];
+    a[idx2] = temp;
+}
+
+static <X extends Comparable<X> >
+int findMinIndex(X a[], int start) {
+    int minIdx = start;
+    for (int k = start + 1; (k < a.length); k++) {
+        if (a[k].compareTo(a[minIdx]) < 0) {
+            minIdx = k;
+        }
+    }
+    return minIdx;
+}
+
+static <X extends Comparable<X> >
+void selectionSort(X a[]) {
+    for (int i = 0; (i < a.length); i++) {
+    int minIdx = findMinIndex(a, i + 1);
+    swap(a, i, minIdx);}
+}
+```
+
 Quick Sort Steps: 
 - Pick random point called pivot point. (This splits array into two unequal and unsorted smaller sub-list's)
 - Put pivot point in its correct spot in sorted array. (All numbers left are lower and all numbers right are larger)
 - call recursively until sub list has 1 element.
+
+Code: 
+
+```java
+static <X extends Comparable<X> >
+int partition(X data[], int min, int max) {
+    X pivot = data[min]; // Assume first element as the pivot
+    // The left and right for partitioning
+    int left = min, right = max;
+    while (left < right) { // Outermost while-loop
+    // Search for element bigger than pivot
+        while((left < right) && (data[left].compareTo(pivot)<= 0)) {
+            left++;
+        }
+            
+        // Search for element smaller than pivot
+        while (data[right].compareTo(pivot) > 0) {
+            right--;
+        }
+        if (left < right) {
+            swap(data, left, right);
+        }
+    }
+    // Move partition element to final position.
+    swap(data, min, right);
+    return right;
+}
+
+
+static <X extends Comparable<X> > 
+void swap(X a[], int idx1, int idx2)  {
+    X temp  = a[idx1];
+    a[idx1] = a[idx2];
+    a[idx2] = temp;
+}
+static <X extends Comparable<X> >
+void quickSort(X data[], int min, int max) {
+    if (min < max) {
+    int pivot = partition(data, min, max);
+    quickSort(data, min, pivot-1);
+    quickSort(data, pivot+1, max); 
+    }
+}
+```
 
 Merge Sort Steps: 
 - if list has 1 element, do nothing (This is the base case).
@@ -485,4 +557,40 @@ void merge(X data[], int first, int mid, int last) {
         data[i] = (X) temp[i];
     }
 }
+
+void mergeSort(X data[], int min, int max) {
+    if (min < max>) {
+        int mid = (min + max) / 2;
+        mergeSort(data, min, mid);
+        mergeSort(data, mid+1,max);
+        merge(data,min,mid,max);
+    }
+}
 ```
+
+Insertion Sort: 
+
+Code: 
+
+```java
+static <X extends Comparable<X> > 
+void insertionSort(X data[]) {
+    for (int i = 1; (i < data.length); i++) {
+        X key = data[i];
+        int pos = i;
+        // Shift larger values to the right
+        while (pos > 0 && 
+            data[pos-1].compareTo(key) > 0) {
+            data[pos] = data[pos-1];
+            pos--;
+        }
+        data[pos] = key;
+    }
+}
+
+```
+
+Java has some algorithms already implemented, ready to be used. 
+
+For arrays of primitive types in Arrays's class you need an implementation for each different type. For collections in Collections class, it must implement the ```collection``` interface. Sorting is done using an iterative version of merge sort for collections, and quickSort is used for array's class but instead it uses the dual pivot method.
+
