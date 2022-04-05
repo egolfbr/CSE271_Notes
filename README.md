@@ -12,7 +12,8 @@ Notes written by Brian Egolf and adapted from Dr. Rao's (Miami University CSE De
 **[Interfaces](#interfaces)**<br>
 **[Unit Testing and Debugging](#Unit-Testing)**<br>
 **[Recursion](#Recursion)**<br>
-**[Sorting and Complexity](#Sorting-and-Complexity)**<br>
+**[Sorting](#Sorting)**<br>
+**[Complexity](#Complexity)**<br>
 ## Java Classes  
 
 4 pillars of object-oriented programming:
@@ -438,7 +439,7 @@ static String reverse(String str) {
 ```
 
 Other probelms that recurision is great for is searching. Binary search is typically a recursive method. 
-## Sorting and Complexity
+## Sorting
 
 Recursion can also be used to sort data. Organizing data in a specific order. Examples of orders are increasing, decreasing, alphabetical, or chronological. 
 For native data types, to compare two data instances you can use comparision methods or symbols (<, >,=). For objects you will need to use a ```compareTo``` method. ```CompareTo``` must be implemented to be symmetric and transitive.
@@ -631,3 +632,23 @@ static void resort(ArrayList<Integer> list) {
 Collections.sort(list, (x, y) -> y.compareTo(x));
 }
 ```
+## Complexity 
+
+When writing algorithms it is important to consider the cost of running that algorithm. Key metrics that we are concerned with are time, and memory. There are others like network usage and storage but we are not concerned with those for this class. 
+
+Analyzing programs allows for optimization and allows the programmer to adapt and change the algorithm to meet certain needs.
+
+There are two different types of analysis. 
+1. Analytical (Mathematical)
+2. Experimental
+
+Analytical: 
+- Time Complexity Analysis
+
+Experimental: 
+- Benchmarking
+- Elapsed time of running algorithm 
+
+
+
+
