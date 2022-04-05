@@ -459,8 +459,30 @@ Quick Sort Steps:
 - call recursively until sub list has 1 element.
 
 Merge Sort Steps: 
-- if list has 1 element, do nothing.
+- if list has 1 element, do nothing (This is the base case).
 - split array into two sub-lists
 - call Merge sort on each sub-list
 - merge two arrays while preserving order
 
+Merge Code:
+```java
+static <X extends Comparable<X>
+
+void merge(X data[], int first, int mid, int last) {
+    Object temp[] = new Object[data.length];
+    int first1 = first, last1 = mid; 
+    int first2 = mid+1, last2 - last; 
+    int index = first; 
+    while(first1 <=last2 || first2 <= last2) {
+            if ((fist1 <= last1) && data[first1.compareTo(data[first2])] < 0) {
+                temp[index] = data[first1++];
+            } else {
+                temp[index] = data[first2++];
+            }
+        index++;
+    }
+    for (int i = 0; i < data.length; i++) {
+        data[i] = (X) temp[i];
+    }
+}
+```
